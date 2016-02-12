@@ -10,8 +10,8 @@ var rimraf = require('rimraf');
 
 var config = {
   paths: {
-    js: './src/js/**/*.js', //'./routes/*.js'
-    sass: './src/css/**/*.scss',
+    js: './src/js/**/*.js',
+    sass: './src/css/**/*.css',
     html: './src/partials/**/*.html'
   }
 };
@@ -25,6 +25,7 @@ gulp.watch   // watch files for changes, to run tasks
 */
 
 // Delete previous build files to prevent accidental leftovers being used
+// This includes the folders themselves!!
 gulp.task('clean-js', function(cb) {
   rimraf('./public/js', cb);
 });

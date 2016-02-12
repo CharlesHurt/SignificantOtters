@@ -3,12 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>Significant Otter</title>
-  <link rel="stylesheet" href="./public/bower_components/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="./public/css/style.css">
-  <script src="public/bower_components/angular/angular.js"></script>
-  <script src="public/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <!-- Because this is being served everything is assumed to be from standpoint of /public -->
+  <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./bower_components/angular/angular.js"></script>
+  <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="./js/bundle.js"></script>
 </head>
-<body>
-Getting together made simple
+<body ng-app="S-O-App" >
+  <button ng-click="$scope.go('/login')">Login</button>
+  <div ng-controller="userController" >Getting together made simple: Who do you want to date? {{x}}
+    <ui-view></ui-view>
+  </div>
+
 </body>
 </html>
