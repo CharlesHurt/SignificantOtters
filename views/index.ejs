@@ -12,8 +12,14 @@
 </head>
 <body ng-app="S-O-App" >
   <div  ng-controller="userController" >
-  <button ng-click="gotoLogin()">Login </button>
-  <a ui-sref=’home2’> use ui-sref to go to login</a>
+  <button ng-click="gotoHomeState()">Home</button>
+  <button ng-click="gotoLoginState()">Login</button>
+  <button ng-click="gotoRegisterState()">Register</button>
+  <button ng-click="gotoProfileState()">Profile</button>
+  <button ng-click="gotoBrowseState()">Browse</button>
+  <button ng-click="gotoChatState()">Chat</button>
+
+  <a ui-sref=’home’> This method failed: ui-sref=’home’</a>
    Getting together made simple: Who do you want to date? {{x}}
       <ui-view></ui-view>
 
