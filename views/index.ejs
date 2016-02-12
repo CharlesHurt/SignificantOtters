@@ -11,9 +11,12 @@
   <script src="./js/bundle.js"></script>
 </head>
 <body ng-app="S-O-App" >
-  <button ng-click="$scope.go('/login')">Login</button>
-  <div ng-controller="userController" >Getting together made simple: Who do you want to date? {{x}}
-    <ui-view></ui-view>
+  <div  ng-controller="userController" >
+  <button ng-click="gotoLogin()">Login </button>
+  <a ui-sref=’home2’> use ui-sref to go to login</a>
+   Getting together made simple: Who do you want to date? {{x}}
+      <ui-view></ui-view>
+
   </div>
 
 </body>
