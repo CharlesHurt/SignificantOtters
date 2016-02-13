@@ -4,26 +4,30 @@
   <meta charset="UTF-8">
   <title>Significant Otter</title>
   <!-- Because this is being served everything is assumed to be from standpoint of /public -->
-  <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
+
+  <link rel="stylesheet" href="./bower_components/foundation/css/foundation.css">
   <link rel="stylesheet" href="./css/style.css">
   <script src="./bower_components/angular/angular.js"></script>
   <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="./bower_components/jquery/dist/jquery.js"></script>
+  <script src="./bower_components/foundation/js/foundation.js"></script>
   <script src="./js/bundle.js"></script>
 </head>
 <body ng-app="S-O-App" >
-  <div ng-controller="userController" >
-  <button ng-show="getState()!=='homeState'" ng-click="gotoHomeState()">Home</button>
-  <button ng-show="getState()!=='loginState'" ng-click="gotoLoginState()">Login</button>
-  <button ng-show="getState()!=='registerState'" ng-click="gotoRegisterState()">Register</button>
-  <button ng-show="getState()!=='profileState'" ng-click="gotoProfileState()">Profile</button>
-  <button ng-show="getState()!=='browseState'" ng-click="gotoBrowseState()">Browse</button>
-  <button ng-show="getState()!=='chatState'" ng-click="gotoChatState()">Chat</button>
+  <div class='cTitleBox' ng-controller="userController" >
 
-  <ui-view></ui-view>
+    <button ng-disabled="getState()==='homeState'" ng-click="gotoHomeState()">Home</button>
+    <button ng-disabled="getState()==='loginState'" ng-click="gotoLoginState()">Login</button>
+    <button ng-disabled="getState()==='registerState'" ng-click="gotoRegisterState()">Register</button>
+    <button ng-disabled="getState()==='profileState'" ng-click="gotoProfileState()">Profile</button>
+    <button ng-disabled="getState()==='browseState'" ng-click="gotoBrowseState()">Browse</button>
+    <button ng-disabled="getState()==='chatState'" ng-click="gotoChatState()">Chat</button>
+
   </div>
+    <div class="row"><ui-view></ui-view></div>
 
 
-<!-- <script src='registrationService.js'></script> -->
+
+  <!-- <script src='registrationService.js'></script> -->
 </body>
 </html>
