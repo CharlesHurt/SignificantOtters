@@ -8,22 +8,22 @@
   <link rel="stylesheet" href="./css/style.css">
   <script src="./bower_components/angular/angular.js"></script>
   <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="./bower_components/jquery/dist/jquery.js"></script>
   <script src="./js/bundle.js"></script>
 </head>
 <body ng-app="S-O-App" >
-  <div  ng-controller="userController" >
-  <button ng-click="gotoHomeState()">Home</button>
-  <button ng-click="gotoLoginState()">Login</button>
-  <button ng-click="gotoRegisterState()">Register</button>
-  <button ng-click="gotoProfileState()">Profile</button>
-  <button ng-click="gotoBrowseState()">Browse</button>
-  <button ng-click="gotoChatState()">Chat</button>
+  <div ng-controller="userController" >
+  <button ng-show="getState()!=='homeState'" ng-click="gotoHomeState()">Home</button>
+  <button ng-show="getState()!=='loginState'" ng-click="gotoLoginState()">Login</button>
+  <button ng-show="getState()!=='registerState'" ng-click="gotoRegisterState()">Register</button>
+  <button ng-show="getState()!=='profileState'" ng-click="gotoProfileState()">Profile</button>
+  <button ng-show="getState()!=='browseState'" ng-click="gotoBrowseState()">Browse</button>
+  <button ng-show="getState()!=='chatState'" ng-click="gotoChatState()">Chat</button>
 
-  <a ui-sref=’home’> This method failed: ui-sref=’home’</a>
-   Getting together made simple: Who do you want to date? {{x}}
-      <ui-view></ui-view>
-
+  <ui-view></ui-view>
   </div>
 
+
+<!-- <script src='registrationService.js'></script> -->
 </body>
 </html>

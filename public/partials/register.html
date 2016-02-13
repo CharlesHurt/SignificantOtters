@@ -1,15 +1,107 @@
-<div class="container">
+<div class="container" ng-controller='userController'>
   <section class="row">
     <div class="col-medium-3">
-    Username: &nbsp;<input value="soandso">
+      UserName: &nbsp;<input ng-model="userObj.username"  >
     </div>
     <div class="col-medium-3">
-    Pwd: &nbsp;<input value="somebody" type='password'>
+      Pwd: &nbsp;<input ng-model="userObj.password" type='password'>
     </div>
-    <div class="col-medium-3">
-    Verify Pwd: &nbsp;<input value="somebody" type='password'>
-    </div>
-    &nbsp;<button>Register</button>
-    </div>
-  </section>
+    <!-- <div class="col-medium-3">
+      Verify Pwd: Needs fix &nbsp;<input  type='password'>
+    </div> -->
+    &nbsp;<button ng-click="registerNewPerson()">Register</button>
+  </div>
+</section>
 </div>
+<!--
+<hr>
+<h3 class="col-xs-8 col-xs-offset-2">Register
+  <form id="formRegister" class="col-xs-8 col-xs-offset-2">
+    <div class="form-group"><span class="requiredField">* </span>
+      <label>First Name</label>
+      <input id="firstName" type="text" placeholder="First Name" required="required" class="form-control"/>
+    </div>
+    <div class="form-group"><span class="requiredField">* </span>
+      <label>Last Name</label>
+      <input id="lastName" type="text" placeholder="Last Name" required="required" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label>Phone #</label>
+      <input id="phone" type="text" placeholder="Phone #" class="form-control"/>
+    </div>
+    <div class="form-group"><span class="requiredField">* </span>
+      <label>Email address</label>
+      <input id="email" type="email" placeholder="E-Mail" required="required" class="form-control"/>
+    </div>
+    <div class="form-group"><span class="requiredField">* </span>
+      <label>Password</label>
+      <input id="password" type="password" placeholder="Password" required="required" class="form-control"/>
+    </div>
+    <div class="form-group"><span class="requiredField">* </span>
+      <label>Verify Password</label>
+      <input id="verifyPassword"  type="password" placeholder="Verify Password" required="required" class="form-control"/>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</h3>
+-->
+<script src="./bower_components/jquery/dist/jquery.js"></script>
+<script>
+
+"use strict";
+
+var $firstName, $lastName, $phone, $email, $pass1, $pass2;
+
+var fields;
+
+$(document).ready(init);
+
+function init() {
+  console.log('jqueryyyy  !')
+  $("#formRegister").submit(doRegister);
+  $firstName = $("#firstName");
+  $lastName = $("#lastName");
+  $phone = $("#phone");
+  $email = $("#email");
+  $pass1 = $("#password");
+  $pass2 = $("#verifyPassword");
+  fields = [$firstName, $lastName, $phone, $email, $pass1, $pass2];
+}
+
+function clearFields() {
+  fields.forEach(function(field) {
+    field.val("");
+  });
+}
+
+function doRegister(e) {
+  e.preventDefault();
+  if($pass1.val() !== $pass2.val()) {
+    alert("Passwords must match")
+  } else {
+    alert('Make backend request here')
+    registerNewPerson("aUser", "aPwd")
+    /*
+    $.post("/users/register", {
+    email: $email.val(),
+    password: $pass1.val(),
+    name: {
+    first: $firstName.val(),
+    last: $lastName.val()
+  },
+  phone: $phone.val()
+})
+.success(function(data) {
+alert(title:"New User Created")
+location.href = "/users/login";
+
+})
+.fail(function(err) {
+console.error(err);
+alert("An Error Has Occurred", "See console for details");
+})
+*/
+clearFields();
+}
+}
+</script>

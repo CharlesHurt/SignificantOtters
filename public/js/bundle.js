@@ -1,11 +1,12 @@
 'use strict'
 
+
  var app = angular.module('S-O-App', ['ui.router'])
 
 // Put this config before defining the controllers
  app.config(function($stateProvider, $urlRouterProvider) {
 
-   console.log($stateProvider);
+   //console.log($stateProvider);
    $stateProvider
      .state('homeState',
        {url: '/home',
@@ -35,13 +36,22 @@
    $urlRouterProvider.otherwise('/')
  })
 
+
 // This is after .config, but not often used
 //app.run...
 
- app.controller("userController", function($scope, $state) {
+app.controller("userController", function($scope, $state, registerService) {
   //$scope.x = 42
+  // $scope.firstName;
+  // $scope.lastName;
+  // $scope.regPwd;
+  $scope.getState = function() {
+    return $state.current.name
+  }
+
   $scope.gotoHomeState = function() {
     $state.go("homeState")
+    console.log($state.current.name) // This returns ALL state objects, so ask who is active
   }
   $scope.gotoLoginState = function() {
     $state.go("loginState")
@@ -58,4 +68,32 @@
   $scope.gotoChatState = function() {
     $state.go("chatState")
   }
- })
+
+  $scope.registerNewPerson = function() {
+    console.log('calling registerService here');
+    registerService.registerUser($scope.regUserName, $scope.regPwd)
+  }
+})
+
+'use strict';
+
+var app = angular.module('S-O-App');
+
+app.service('registerService', function($http, $rootScope) {
+
+  // could not figure how to hook this up, next would have considered $rootScope
+  // or passing an object from a different scope
+  this.register = function(user) { // a single quote parse the URL to get ticker
+    console.log('registerUser called')
+    $http({
+      method:"POST",
+      url:"/users/register",
+      data: {username: username, password: password}
+    })
+    .then(function successCallback(res) {
+      console.log('success res:', res);
+    }, function errorCallback(res) {
+      console.log('An error occurred in registerUser call:' + res);
+    })
+  }
+})
