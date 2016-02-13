@@ -1,7 +1,6 @@
 'use strict'
 
-
- var app = angular.module('S-O-App', ['ui.router'])
+var app = angular.module('S-O-App', ['ui.router'])
 
 // Put this config before defining the controllers
  app.config(function($stateProvider, $urlRouterProvider) {
